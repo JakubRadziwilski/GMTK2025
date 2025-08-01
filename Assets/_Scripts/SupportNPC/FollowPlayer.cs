@@ -5,7 +5,7 @@ public class FollowPlayer : MonoBehaviour
     public Transform player; // Reference to the player's transform
     public float followDistance = 2f; // Distance to maintain from the player
     public float MoveSpeed = 1f;
-    public float maxDistance = 10f; // Maximum distance to follow the player
+    public float maxDistance = 10f; // Maximum distance to the player
     Rigidbody2D rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,7 +19,7 @@ public class FollowPlayer : MonoBehaviour
     {
         if (DistanceToPlayer() > maxDistance)
         {
-            transform.position = player.position + (transform.position - player.position).normalized * maxDistance;
+            transform.position = player.position + (transform.position - player.position).normalized * maxDistance/2;
             return;
         }
         if (DistanceToPlayer() > followDistance)

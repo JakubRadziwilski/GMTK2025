@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -29,6 +30,10 @@ public class Door : MonoBehaviour
         {
             // If so, teleport the player to the connected door's spawn position
             other.transform.position = connected_to.SpawnPos();
+            // Call ExitRoom on the current door's room
+            ExitRoom();
+            // Call the EnterRoom method on the connected door's room
+            Invoke("EnterTheOtherRoom",2);
         }
     }
 
@@ -50,5 +55,20 @@ public class Door : MonoBehaviour
         }
     }
 
-    
+    public void EnterTheOtherRoom()
+    {
+        // Call the EnterRoom method on the connected door's room
+        connected_to.GetComponentInParent<Room>().EnterRoom();
+    }
+    public void ExitRoom()
+    {
+        // Call the ExitRoom method on the room this door is in
+        GetComponentInParent<Room>().ExitRoom();
+    }
+
+    public DoorType GetDoorType()
+    {
+        // Return the type of the door
+        return type;
+    }
 }
