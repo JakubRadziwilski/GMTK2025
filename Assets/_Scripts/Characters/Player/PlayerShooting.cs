@@ -33,7 +33,6 @@ public class PlayerShooting : MonoBehaviour
         {
             Shoot();
             AddCoolDownInSeconds(ShootingSpeed);
-            Debug.Log("SHOOT");
         }
     }
 
