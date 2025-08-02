@@ -33,6 +33,7 @@ public class PlayerStats : MonoBehaviour
     public float damageReduction = 0f; // Damage reduction percentage for the player
     public float AbilityCooldown = 5f; // Cooldown time for abilities
 
+    public event Action onRunStart; // Event to notify when player stats change
     public event Action onRunEnd; // Event to notify when player stats change
     public List<Ability> abilities = new(); // List of abilities the player can use
     int currentAbilityIndex = 0; // Index of the current ability being used
@@ -47,6 +48,7 @@ public class PlayerStats : MonoBehaviour
 
     public void StartNextRun()
     {
+        onRunStart?.Invoke(); // Invoke the event when the run starts
         isRunning = true; // Set the running flag to true
 
         InvokeRepeating(nameof(ActivateNextAbility), 0f, AbilityCooldown); // Start activating abilities at the defined cooldown
@@ -76,7 +78,6 @@ public class PlayerStats : MonoBehaviour
 
         Ability currentAbility = abilities[currentAbilityIndex]; // Get the current ability
         currentAbility.Activate(player); // Activate the ability on the player transform
-        Debug.Log($"Activated ability: {currentAbility.AbilityName()} - {currentAbility.Description()}");
     }
     
     public void AddPoints(int amount)

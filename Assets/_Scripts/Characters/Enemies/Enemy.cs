@@ -24,7 +24,8 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GetComponent<HealthStat>().SetMaxHP(maxhealth); // Initialize the health stat with max health
+        PlayerStats.Instance.onRunStart += SetUpMaxHP; // Initialize the health stat with max health
+        SetUpMaxHP(); // Set up the maximum health for the enemy
         player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
     }
 
@@ -78,7 +79,6 @@ public class Enemy : MonoBehaviour
             Debug.LogWarning("No target to follow for " + gameObject.name);
         }
     }
-
     public virtual void Atack()
     {
         if (currentTarget != null)
@@ -91,7 +91,6 @@ public class Enemy : MonoBehaviour
             Debug.LogWarning("No target to attack for " + gameObject.name);
         }
     }
-
     public virtual void Upgrade()
     {
         difficultyLevel++; // Increase the difficulty level of the enemy
@@ -109,5 +108,9 @@ public class Enemy : MonoBehaviour
     public void SetPlayerInThisRoom(bool value)
     {
         playerInThisRoom = value; // Set the flag indicating if the player is in the same room
+    }
+    public void SetUpMaxHP()
+    {
+        GetComponent<HealthStat>().SetMaxHP(maxhealth); // Set the maximum health of the enemy
     }
 }

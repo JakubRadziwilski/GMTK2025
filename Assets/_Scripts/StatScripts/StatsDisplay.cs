@@ -9,7 +9,7 @@ public class StatsDisplay : MonoBehaviour
     Color32 neutralColor = new Color32(255, 255, 0, 255); // Yellow for neutral
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         statText = GetComponent<TextMeshProUGUI>();
         if (statText == null)
@@ -37,6 +37,7 @@ public class StatsDisplay : MonoBehaviour
         }
 
         Invoke("GoBackToNeutralColor", 1f); // Reset color after 1 second
+
     }
 
     public void GoBackToNeutralColor()

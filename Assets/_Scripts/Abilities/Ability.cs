@@ -9,13 +9,13 @@ public class Ability : ScriptableObject
     public virtual void Activate(Transform playerTransform)
     {
         // This method should be overridden in derived classes to implement specific ability behavior
-        Debug.Log("Ability activated for player: " + playerTransform.name);
+        
     }
 
     public virtual void Deactivate(Transform playerTransform)
     {
         // This method should be overridden in derived classes to implement specific ability behavior
-        Debug.Log("Ability deactivated for player: " + playerTransform.name);
+        
     }
 
     public virtual string Description()

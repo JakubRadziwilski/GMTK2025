@@ -13,7 +13,7 @@ public class Room : MonoBehaviour
     public int MaxDifficultyLevel = 10;
     public int minDifficultyLevel = 3;
 
-    private List<Enemy> enemies = new (); // List to hold enemies in the room
+    public List<Enemy> enemies = new (); // List to hold enemies in the room
     public List<Door> Doors()
     {
         ExitRoom(); // Ensure the room is exited before getting doors
