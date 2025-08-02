@@ -26,7 +26,6 @@ public class Enemy : MonoBehaviour
     {
         GetComponent<HealthStat>().SetMaxHP(maxhealth); // Initialize the health stat with max health
         player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
-        support = GameObject.FindGameObjectWithTag("Support").transform; // Find the support NPC by tag
     }
 
     void Update()
