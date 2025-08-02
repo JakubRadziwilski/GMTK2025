@@ -41,6 +41,7 @@ public class PlayerStats : MonoBehaviour
     {
         player.GetComponent<PlayersHealthStat>().SetMaxHP(maxHealth); // Set the player's maximum health at the start
         player.GetComponent<PlayerMovement>().SetMoveSpeed(speed); // Set the player's movement speed at the start
+        player.GetComponentInChildren<PlayerShooting>().ShootingSpeed = 1/shootingSpeed; // Set the player's shooting speed at the start
         StartNextRun(); // Start the first run of abilities
     }
 

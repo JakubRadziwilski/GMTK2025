@@ -27,7 +27,6 @@ public class PlayerShooting : MonoBehaviour
 
     public void Attack()
     {
-        Shoot();
         //if not on cooldown perform shoot() and add shootingspeed to cooldown
         if (cooldownEndTimeInSeconds < Time.time)
         {

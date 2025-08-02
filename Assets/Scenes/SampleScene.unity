@@ -327,7 +327,7 @@ MonoBehaviour:
   scoreEarned: 0
   maxHealth: 100
   speed: 1000
-  shootingSpeed: 1
+  shootingSpeed: 3
   damage: 10
   damageReduction: 0
   AbilityCooldown: 5
@@ -926,19 +926,7 @@ MonoBehaviour:
     m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
     m_ActionName: 'Player/Attack[/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 28598421}
-        m_TargetAssemblyTypeName: PlayerInteract, Assembly-CSharp
-        m_MethodName: Interact
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: 'Player/Interact[/Keyboard/e]'
   - m_PersistentCalls:
@@ -1148,6 +1136,10 @@ PrefabInstance:
     - target: {fileID: 7062230144980936973, guid: f285397d9d2a54748a98aa3edd394ddc, type: 3}
       propertyPath: m_Name
       value: PointShop
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062230144980936973, guid: f285397d9d2a54748a98aa3edd394ddc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455877739565829955, guid: f285397d9d2a54748a98aa3edd394ddc, type: 3}
       propertyPath: m_IsActive

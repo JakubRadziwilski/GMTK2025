@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9175630728212242786}
   - component: {fileID: 6752962288445476057}
   - component: {fileID: 6562614337673492284}
-  - component: {fileID: 7086718353871875803}
+  - component: {fileID: 7952372623879488784}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1c749b7425c4e44bba3d4833968639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &7086718353871875803
-CapsuleCollider2D:
+--- !u!58 &7952372623879488784
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -164,5 +164,4 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
+  m_Radius: 0.5
