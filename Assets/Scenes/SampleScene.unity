@@ -1567,9 +1567,9 @@ MonoBehaviour:
     m_ActionName: 'Player/Look[/Mouse/delta]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1881350513}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
-        m_MethodName: Attack
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2090,6 +2090,8 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 194142865}
   bulletPrefab: {fileID: 2540131287983995498, guid: d5f4d9a8e0f06bd4aa8e1af7c8f6c91b, type: 3}
   BulletSpeed: 20
+  ShootingSpeed: 0.25
+  cooldownEndTimeInSeconds: 0
 --- !u!1 &1911851594
 GameObject:
   m_ObjectHideFlags: 0
