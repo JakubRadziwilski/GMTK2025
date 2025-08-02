@@ -95,14 +95,13 @@ public class Enemy : MonoBehaviour
 
     public virtual void Upgrade()
     {
-        // Default behavior: do nothing
-        Debug.LogWarning("Upgrade method not implemented in " + gameObject.name);
-
+        difficultyLevel++; // Increase the difficulty level of the enemy
     }
 
     public void Respawn()
     {
         // Respawn the enemy by resetting its health and position
+        Upgrade(); // Upgrade the enemy if necessary
         GetComponent<HealthStat>().SetMaxHP(maxhealth); // Reset health to max
         SetPlayerInThisRoom(true); // Ensure the player is in the room
         gameObject.SetActive(true); // Reactivate the enemy GameObject
