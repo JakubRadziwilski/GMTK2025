@@ -22,6 +22,11 @@ public class HealthStat : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false); // Deactivate the GameObject when health reaches zero
+
+            if(gameObject.CompareTag("Player"))
+            {
+                PlayerStats.Instance.EndCurrentRun(); // Notify PlayerStats when the player dies
+            }
         }
         statDisplay.UpdateStatDisplay(currentHealth, currentHealth + amount);
     }
