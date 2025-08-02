@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Net.Sockets;
 using Unity.Mathematics;
 using UnityEngine;
@@ -9,9 +8,6 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]Transform bulletSpawnPoint;
     [SerializeField]GameObject bulletPrefab;
     public float BulletSpeed = 10f;
-    public float ShootingSpeed = 0.25f;
-
-    float cooldownEndTimeInSeconds;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,23 +18,12 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mouse.current.leftButton.isPressed) Attack();
+
     }
-    
 
     public void Attack()
     {
-        //if not on cooldown perform shoot() and add shootingspeed to cooldown
-        if (cooldownEndTimeInSeconds < Time.time) 
-        {
-            Shoot();
-            AddCoolDownInSeconds(ShootingSpeed);
-        }
-    }
-
-    public void AddCoolDownInSeconds(float addedTime)
-    {
-        cooldownEndTimeInSeconds = Time.time + addedTime;
+        Shoot();
     }
 
     void Shoot()

@@ -11,14 +11,14 @@ public class DungeonGenerator : MonoBehaviour
     public int minRooms = 10; // Minimum number of rooms in the dungeon
     public int maxRooms = 100; // Maximum number of rooms in the dungeon
 
-    public Vector2Int maxRoomSize = new Vector2Int(20, 20); // Maximum size of a room
-    Vector2Int DungeonUpperRightCorner = new Vector2Int(5, 5); // Upper corner of the dungeon
-    Vector2Int DungeonLowerLeftCorner = new Vector2Int(-5, -5); // Upper corner of the dungeon
+    public Vector2Int maxRoomSize = new (20, 20); // Maximum size of a room
+    Vector2Int DungeonUpperRightCorner = new(5, 5); // Upper corner of the dungeon
+    Vector2Int DungeonLowerLeftCorner = new (-5, -5); // Upper corner of the dungeon
 
     public Vector2Int StartingPos = Vector2Int.zero; // Center position of the dungeon
 
     List<GameObject> PossibleRooms; // List of rooms in the dungeon
-    List<Door> Doors = new List<Door>(); // List of doors in the dungeon
+    List<Door> Doors = new(); // List of doors in the dungeon
     
     private void Start()
     {
@@ -47,7 +47,7 @@ public class DungeonGenerator : MonoBehaviour
 
         int roomCount = Random.Range(minRooms, maxRooms + 1); // Randomly determine the number of rooms to place
 
-        List<Vector2Int> free_position = new List<Vector2Int>(); // List of free positions in the dungeon
+        List<Vector2Int> free_position = new(); // List of free positions in the dungeon
         for (int x = DungeonLowerLeftCorner.x; x < DungeonUpperRightCorner.x; x++)
             for (int y = DungeonLowerLeftCorner.y; y < DungeonUpperRightCorner.y; y++)
                 free_position.Add(new Vector2Int(x, y)); // Add each position in the dungeon to the list of free positions
@@ -76,6 +76,7 @@ public class DungeonGenerator : MonoBehaviour
         // Instantiate the room at the current position
         Room newRoom = Instantiate(room, new Vector3(StartingPos.x * maxRoomSize.x, StartingPos.y * maxRoomSize.y, 0), Quaternion.identity);
         // Add the doors from the new room to the list of doors
+        newRoom.SpawnEnemies(); // Spawn enemies in the starting room
         Doors.AddRange(newRoom.Doors());
         newRoom.roomCamera.Priority = 2; // Set the camera priority for the starting room
     }
@@ -87,6 +88,7 @@ public class DungeonGenerator : MonoBehaviour
         Room newRoom = Instantiate(room,new Vector3(x*maxRoomSize.x,y*maxRoomSize.y,0), Quaternion.identity);
         // Add the doors from the new room to the list of doors
         Doors.AddRange(newRoom.Doors());
+        newRoom.SpawnEnemies(); // Spawn enemies in the newly placed room
     }
     void ConnectDoors()
     {

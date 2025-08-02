@@ -33,7 +33,7 @@ public class Door : MonoBehaviour
             // Call ExitRoom on the current door's room
             ExitRoom();
             // Call the EnterRoom method on the connected door's room
-            Invoke("EnterTheOtherRoom",2);
+            connected_to.EnterRoom();
         }
     }
 
@@ -55,11 +55,12 @@ public class Door : MonoBehaviour
         }
     }
 
-    public void EnterTheOtherRoom()
+    public void EnterRoom()
     {
-        // Call the EnterRoom method on the connected door's room
-        connected_to.GetComponentInParent<Room>().EnterRoom();
+        // Call the EnterRoom method on the room this door is in
+        GetComponentInParent<Room>().EnterRoom();
     }
+
     public void ExitRoom()
     {
         // Call the ExitRoom method on the room this door is in
