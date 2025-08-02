@@ -380,7 +380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669afb161d1bb59479cda49b8c074ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   statDisplay: {fileID: 1373488466}
 --- !u!61 &97493309
 BoxCollider2D:
@@ -490,7 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRooms: 10
   maxRooms: 20
-  maxRoomSize: {x: 20, y: 20}
+  maxRoomSize: {x: 40, y: 40}
   StartingPos: {x: 0, y: 0}
 --- !u!4 &368204276
 Transform:
@@ -1180,6 +1179,7 @@ GameObject:
   - component: {fileID: 1458418518}
   - component: {fileID: 1458418517}
   - component: {fileID: 1458418520}
+  - component: {fileID: 1458418522}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1243,7 +1243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefb0ca909722184ebfa30b3e3987422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 1000
 --- !u!114 &1458418518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1410,7 +1409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669afb161d1bb59479cda49b8c074ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   statDisplay: {fileID: 1289796819}
 --- !u!61 &1458418521
 BoxCollider2D:
@@ -1458,6 +1456,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1458418522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458418513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb85ad5e4cd6d446a24c7c896d47a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  speed: 1000
 --- !u!1 &1572287121
 GameObject:
   m_ObjectHideFlags: 0

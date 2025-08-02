@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
+    public float roomWaitTime = 2f; // Time to wait before entering the room
     public CinemachineCamera roomCamera; // Camera associated with the room
     public int RoomHeight = 10; // Height of the room
     public int RoomWidth = 18; // Width of the room
@@ -37,7 +38,7 @@ public class Room : MonoBehaviour
             Debug.LogWarning("Room camera is not assigned for room: " + gameObject.name);
         }
 
-        RespawnEnemies(); // Respawn enemies when entering the room
+        Invoke(nameof(RespawnEnemies),roomWaitTime); // Respawn enemies when entering the room
     }
 
     public void RespawnEnemies()
@@ -52,11 +53,11 @@ public class Room : MonoBehaviour
         }
         else
         {
-            foreach(Enemy enemy in enemies)
+            foreach (Enemy enemy in enemies)
             {
                 if (enemy.gameObject.activeSelf) // Check if the enemy is active
                 {
-                    enemy.SetPlayerInThisRoom(true); // Respawn the inactive enemy
+                    enemy.SetPlayerInThisRoom(true); // Set the player in this room to true for active enemies
                 }
             }
         }
@@ -117,9 +118,9 @@ public class Room : MonoBehaviour
             Enemy enemyToSpawn = possible_enemies[Random.Range(0, possible_enemies.Count)];
             // Instantiate the enemy at a random position within the room
             Vector3 spawnPosition = RandomInRoomPosition();
-            Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, transform); // Create an instance of the enemy
-            enemies.Add(enemyToSpawn); // Add the enemy instance to the room's list of enemies
-            difficultyLevel -= enemyToSpawn.GetComponent<Enemy>().difficultyLevel; // Decrease the difficulty level based on the spawned enemy's difficulty
+            Enemy spawned_enemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, transform); // Create an instance of the enemy
+            enemies.Add(spawned_enemy); // Add the enemy instance to the room's list of enemies
+            difficultyLevel -= spawned_enemy.GetComponent<Enemy>().difficultyLevel; // Decrease the difficulty level based on the spawned enemy's difficulty
         }
     }
 

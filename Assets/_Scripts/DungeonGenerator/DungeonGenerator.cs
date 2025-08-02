@@ -16,6 +16,7 @@ public class DungeonGenerator : MonoBehaviour
     Vector2Int DungeonLowerLeftCorner = new (-5, -5); // Upper corner of the dungeon
 
     public Vector2Int StartingPos = Vector2Int.zero; // Center position of the dungeon
+    Room StartingRoom; // Reference to the starting room
 
     List<GameObject> PossibleRooms; // List of rooms in the dungeon
     List<Door> Doors = new(); // List of doors in the dungeon
@@ -31,6 +32,7 @@ public class DungeonGenerator : MonoBehaviour
         CalculateDungeonCorners(); // Call the method to calculate the corners of the dungeon
         PlaceRooms(); // Call the method to place rooms in the dungeon
         ConnectDoors(); // Call the method to connect doors in the dungeon
+        StartingRoom.EnterRoom(); // Call the method to enter the starting room
     }
 
     void CalculateDungeonCorners()
@@ -79,6 +81,7 @@ public class DungeonGenerator : MonoBehaviour
         newRoom.SpawnEnemies(); // Spawn enemies in the starting room
         Doors.AddRange(newRoom.Doors());
         newRoom.roomCamera.Priority = 2; // Set the camera priority for the starting room
+        StartingRoom = newRoom; // Set the starting room reference
     }
     void PlaceRoomAtDungeonPosition(int x, int y)
     {

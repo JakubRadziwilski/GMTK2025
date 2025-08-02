@@ -202,10 +202,9 @@ MonoBehaviour:
   maxhealth: 50
   difficultyLevel: 3
   attackDamage: 5
-  attackRange: 1.5
+  attackRange: 1
   attackCooldown: 5
-  Speed: 5
-  maxInteractionDistance: 10
+  Speed: 6
 --- !u!114 &4884281960321162201
 MonoBehaviour:
   m_ObjectHideFlags: 0

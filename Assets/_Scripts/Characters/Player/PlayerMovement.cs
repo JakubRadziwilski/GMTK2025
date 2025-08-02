@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float MoveSpeed = 1f;
+    float MoveSpeed = 1f;
     Rigidbody2D rb;
     Vector2 moveInput;
 
@@ -22,5 +22,10 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void SetMoveSpeed(float speed)
+    {
+        MoveSpeed = speed; // Update the player's movement speed
     }
 }
