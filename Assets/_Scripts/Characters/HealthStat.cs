@@ -7,19 +7,6 @@ public class HealthStat: MonoBehaviour
 
     public StatsDisplay statDisplay;
 
-    private void Start()
-    {
-        currentHealth = maxHealth; // Initialize current health to max health
-        if (statDisplay == null)
-        {
-            Debug.LogError("StatsDisplay component is not assigned in the inspector for " + gameObject.name);
-        }
-        else
-        {
-            statDisplay.UpdateStatDisplay(currentHealth, 0); // Initialize the stat display
-        }
-    }
-
     public void Heal(int amount)
     {
         currentHealth += amount;
@@ -34,8 +21,15 @@ public class HealthStat: MonoBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
-            Destroy(gameObject); // Destroy the game object if health is zero or less
+            gameObject.SetActive(false); // Deactivate the GameObject when health reaches zero
         }
         statDisplay.UpdateStatDisplay(currentHealth, currentHealth + amount);
+    }
+
+    public void SetMaxHP(int amount)
+    {
+        currentHealth = amount; // Set the current health to the maximum health
+        maxHealth = amount;
+        statDisplay.UpdateStatDisplay(maxHealth, 0); // Initialize the stat display
     }
 }
