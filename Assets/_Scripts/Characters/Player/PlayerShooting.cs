@@ -11,7 +11,7 @@ public class PlayerShooting : MonoBehaviour
 
     public float ShootingSpeed = 0.25f;
 
-    float cooldownEndTimeInSeconds;
+    [SerializeField]float cooldownEndTimeInSeconds;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,10 +29,11 @@ public class PlayerShooting : MonoBehaviour
     {
         Shoot();
         //if not on cooldown perform shoot() and add shootingspeed to cooldown
-        if (cooldownEndTimeInSeconds < Time.time) 
+        if (cooldownEndTimeInSeconds < Time.time)
         {
             Shoot();
             AddCoolDownInSeconds(ShootingSpeed);
+            Debug.Log("SHOOT");
         }
     }
 
