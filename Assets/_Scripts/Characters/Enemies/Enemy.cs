@@ -31,14 +31,14 @@ public class Enemy : MonoBehaviour
             // If the player is too far away, do nothing
             return;
         }
-        DecideAction();
+        action = DecideAction();
         action.Invoke(); // Invoke the action to be performed
     }
 
 
-    public virtual void DecideAction()
+    public virtual Action DecideAction()
     {
-        // Default behavior: do nothing
+        return null; // Default behavior: do nothing
     }
 
     public virtual void Upgrade()
