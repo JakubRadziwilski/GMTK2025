@@ -2,7 +2,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))] // Ensure the HealthStat component has a Collider for interaction detection
 public class HealthStat: MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+    private int maxHealth = 100;
     private int currentHealth;
 
     public StatsDisplay statDisplay;
