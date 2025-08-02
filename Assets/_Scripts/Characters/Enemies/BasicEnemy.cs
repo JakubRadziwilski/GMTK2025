@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 
 public class BasicEnemy:Enemy
 {
@@ -11,26 +10,25 @@ public class BasicEnemy:Enemy
     private AbilityState attackState = AbilityState.Idle; // Current state of the enemy's ability
 
     [SerializeField] private float moveSpeed = 2f; // Speed at which the enemy moves towards the player
-    public override Action DecideAction()
+    public override void DecideAction()
     {
         if(player == null)
         {
             Debug.LogWarning("Player not found. Cannot perform action.");
-            return null;
+            return;
         }
         // Check if the player is within attack range
         if (Vector3.Distance(transform.position, player.position) <= attackRange)
         {
             if(cooldownLeft <= 0f && attackState == AbilityState.Idle)
             {
+                action = Attack; // Set action to attack
                 cooldownLeft = cooldownTime; // Reset cooldown timer
-
-                return Attack; // Set action to attack
             }
             else
             {
                 cooldownLeft -= Time.deltaTime; // Decrease cooldown timer
-                return () => 
+                action = () => 
                 {
                     // Do nothing while in cooldown
                     if (cooldownLeft <= 0f)
@@ -42,7 +40,7 @@ public class BasicEnemy:Enemy
         }
         else
         {
-            return MoveTowardsPlayer;
+            action = MoveTowardsPlayer;
         }
     }
 
