@@ -10,10 +10,11 @@ public class PointShop : MonoBehaviour
 
     [SerializeField] Canvas canvas;
 
-    public int[] costOfUpgradesByLevel = { 10, 20, 30, 30, 40 };
+    public int[] costOfUpgradesByLevel = { 10, 20, 30, 30, 40 };    // cost of all upgrades on each level
 
-    public int maxHpLevel = 0;
-    public int[] maxHpIncrements = { 10, 20, 30 };
+
+    public int maxHpLevel = 0;  //level of upgrade, starting from level 0
+    public int[] maxHpIncrements = { 10, 20, 30 };  //how much the stat increases on each level
 
     public int damageLevel = 0;
     public int[] damageIncrements = { 10, 20, 30 };
@@ -32,9 +33,9 @@ public class PointShop : MonoBehaviour
 
     bool HandlePayment(int cost)  //check if you can afford and subtract the amount, returns true if payed sucesfully
     {
-        if (cost <= gameManager.Points)
+        if (cost <= PlayerStats.Instance.points)
         {
-            gameManager.SubtractPoints(cost);
+            PlayerStats.Instance.SubtractPoints(cost);
             return true;
         }
         Debug.Log("not enoguh cash to buy this upgrade");
@@ -44,7 +45,7 @@ public class PointShop : MonoBehaviour
     public void BuyHealth()
     {
 
-        if (maxHpIncrements.Length > maxHpLevel)
+            if (maxHpIncrements.Length > maxHpLevel)
         {
             if (HandlePayment(costOfUpgradesByLevel[maxHpLevel]))
             {

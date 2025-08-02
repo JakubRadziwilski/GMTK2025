@@ -23,12 +23,16 @@ public class PlayerStats : MonoBehaviour
     bool isRunning = false; // Flag to check if the player is currently running
 
     public Transform player; // Reference to the player's transform
+
+    public int points = 0;  //Points to spend in the shop 
+    public int scoreEarned = 0; // Points earned in the whole game, does not count spending
     public int maxHealth = 100; // Maximum health of the player
     public float speed = 1000f; // Speed of the player
     public float shootingSpeed = 1f; // Shooting speed of the player
     public int damage = 10; // Damage dealt by the player
     public float damageReduction = 0f; // Damage reduction percentage for the player
     public float AbilityCooldown = 5f; // Cooldown time for abilities
+
 
     public event Action onRunEnd; // Event to notify when player stats change
     public List<Ability> abilities = new (); // List of abilities the player can use
@@ -63,6 +67,15 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void AddPoints(int amount)
+    {
+        points += amount;
+        scoreEarned += amount;
+    }
+    public void SubtractPoints(int amount)
+    {
+        points -= amount;
+        
     private void ActivateNextAbility()
     {
         if (abilities.Count == 0) return; // If there are no abilities, return
