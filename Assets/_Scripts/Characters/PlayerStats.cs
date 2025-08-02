@@ -23,6 +23,9 @@ public class PlayerStats : MonoBehaviour
     bool isRunning = false; // Flag to check if the player is currently running
 
     public Transform player; // Reference to the player's transform
+
+    public int points = 0;  //Points to spend in the shop 
+    public int scoreEarned = 0; // Points earned in the whole game, does not count spending
     public int maxHealth = 100; // Maximum health of the player
     public float speed = 1000f; // Speed of the player
     public float shootingSpeed = 1f; // Shooting speed of the player
@@ -31,7 +34,7 @@ public class PlayerStats : MonoBehaviour
     public float AbilityCooldown = 5f; // Cooldown time for abilities
 
     public event Action onRunEnd; // Event to notify when player stats change
-    public List<Ability> abilities = new (); // List of abilities the player can use
+    public List<Ability> abilities = new(); // List of abilities the player can use
     int currentAbilityIndex = 0; // Index of the current ability being used
 
     private void Start()
@@ -69,9 +72,19 @@ public class PlayerStats : MonoBehaviour
 
         abilities[currentAbilityIndex].Deactivate(player); // Deactivate the current ability before activating the next one
         currentAbilityIndex = (currentAbilityIndex + 1) % abilities.Count; // Move to the next ability in the list
-        
+
         Ability currentAbility = abilities[currentAbilityIndex]; // Get the current ability
         currentAbility.Activate(player); // Activate the ability on the player transform
         Debug.Log($"Activated ability: {currentAbility.AbilityName()} - {currentAbility.Description()}");
+    }
+    
+    public void AddPoints(int amount)
+    {
+        points += amount;
+        scoreEarned += amount;
+    }
+    public void SubtractPoints(int amount)
+    {
+        points -= amount;
     }
 }
