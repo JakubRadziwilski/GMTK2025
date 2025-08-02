@@ -1,6 +1,6 @@
 using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))] // Ensure the HealthStat component has a Collider for interaction detection
-public class HealthStat: MonoBehaviour
+public class HealthStat : MonoBehaviour
 {
     private int maxHealth = 100;
     private int currentHealth;
@@ -31,5 +31,10 @@ public class HealthStat: MonoBehaviour
         currentHealth = amount; // Set the current health to the maximum health
         maxHealth = amount;
         statDisplay.UpdateStatDisplay(maxHealth, 0); // Initialize the stat display
+    }
+
+    public void IncreaseMaxHp(int amount)
+    {
+        SetMaxHP(maxHealth + amount);
     }
 }

@@ -10,6 +10,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+
+    }
+
+    public void SubtractPoints(int amount)
+    {
+        Points -= amount;
+    }
+    public void AddPoints(int amount)
+    {
+        Points += amount;
     }
 }
