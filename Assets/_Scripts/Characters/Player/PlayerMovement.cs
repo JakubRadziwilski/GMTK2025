@@ -11,12 +11,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    void Update()
-    {
-    }
     void FixedUpdate()
     {
-        rb.linearVelocity = moveInput * MoveSpeed * Time.deltaTime;
+        rb.linearVelocity = MoveSpeed * Time.deltaTime * moveInput;
     }
 
     public void Move(InputAction.CallbackContext context)
