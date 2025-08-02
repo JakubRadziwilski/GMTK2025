@@ -25,27 +25,31 @@ public class PointShop : MonoBehaviour
 
     }
 
-    bool Pay(int cost)
+    bool HandlePayment(int cost)  //check if you can afford and subtract the amount, returns true if payed sucesfully
     {
         if (cost <= gameManager.Points)
         {
             gameManager.SubtractPoints(cost);
             return true;
         }
+        Debug.Log("not enoguh cash to buy this upgrade");
         return false;
     }
 
     public void BuyHealth()
     {
-        if (maxHpIncrements.Length > maxHpLevel)
+        if (HandlePayment(costOfUpgradesByLevel[maxHpLevel]))
         {
-            playerHealthStat.IncreaseMaxHp(maxHpIncrements[maxHpLevel]);
-            maxHpLevel += 1;
-        }
-        else
-        {
-            playerHealthStat.IncreaseMaxHp(maxHpIncrements[0]);
-            maxHpLevel += 1;
+            if (maxHpIncrements.Length > maxHpLevel)
+            {
+                playerHealthStat.IncreaseMaxHp(maxHpIncrements[maxHpLevel]);
+                maxHpLevel += 1;
+            }
+            else
+            {
+                playerHealthStat.IncreaseMaxHp(maxHpIncrements[0]);
+                maxHpLevel += 1;
+            }
         }
     }
 }
